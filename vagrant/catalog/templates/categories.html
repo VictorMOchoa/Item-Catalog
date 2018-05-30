@@ -1,0 +1,6 @@
+<section id="showCategories">
+        <h4>Categories</h4>
+            {% for c in categories %}
+              <a href="{{url_for('showCategory', category_name = c.name,)}}" class="list-group-item">{{ c.name }}</a>
+            {% endfor %}
+</section>

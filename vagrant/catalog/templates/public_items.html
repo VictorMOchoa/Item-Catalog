@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block title %}Category Items{% endblock title %}
+
+{% block content %}
+{% include "navigationbar.html" %}
+<section class="section">
+    <div class="container">
+        <div class="row">
+          <div id="category_list_wrapper">
+            {% include "categories.html" %}
+          </div>
+          <div id="catalog_wrapper">
+            <h6 class="padding-bottom-26">Total items available: ({{count}})</h6>
+            <div id="public_item_images" class="col-md-9">
+                {% for i in items %}
+                <div class="thumbnail text-center">
+                    <div class="caption-full">
+                        <img class="img-responsive img-center" src="{{ i.picture }}" alt="{{ i.name }}">
+                    </div>
+                    <a href = "{{url_for('showItem', category_name = i.category.name, item_name = i.name)}}">
+                        <h4>{{ i.name }}</h4>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

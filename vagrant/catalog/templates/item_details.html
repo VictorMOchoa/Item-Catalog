@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block title %}{{ item.name }}{% endblock title %}
+
+{% block content %}
+{% include "navigationbar.html" %}
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            {% include "categories.html" %}
+            <div id="item_details_div" class="col-md-9">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{ item.picture }}" alt="{{ item.name }}">
+                    <div class="caption-full">
+                        <h4>{{ item.name }}</h4>
+                        <p>{{ item.description }}</p>
+                    </div>
+                </div>
+                <!-- Check if the current user is also the person who created this item
+                  if so, show the edit and delete buttons -->
+                {% if current_user == item_owner.id %}
+                  <div class="form-group">
+                    <a href = "{{url_for('deleteItem', category_name = item.category.name, item_name = item.name)}}">
+                      <button type="button" class="btn btn-danger">Delete This Item</button>
+                    </a>
+                    <a href = "{{url_for('editItem', category_name = item.category.name, item_name = item.name)}}">
+                      <button type="button" class="btn btn-danger">Edit This Item</button>
+                    </a>
+                  </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

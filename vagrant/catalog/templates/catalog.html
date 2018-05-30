@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block title %}Catalog{% endblock title %}
+
+{% block content %}
+{% include "navigationbar.html" %}
+<section class = "section">
+    <div class = "container">
+        <div class = "row">
+            <div>
+              {% include "categories.html" %}
+            </div>
+              <h4 id="latest_items_text">Latest Items</h4>
+              <div id = "item_images" class = "col-md-4">
+                  {% for i in items %}
+                  <div>
+                      <div class = "caption-full">
+                        <img class = "img-rounded" src = "{{ i.picture }}" alt = "{{ i.name }}">
+                        <a href = "{{url_for('showItem', category_name = i.category.name, item_name = i.name)}}">
+                            <h5>{{ i.name }}</h5>
+                            <h6>({{ i.category.name }})</h6>
+                        </a>
+                      </div>
+                  </div>
+                  {% endfor %}
+                </div>
+          </div>
+      </div>
+</section>
+{% endblock %}

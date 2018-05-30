@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>{% block title %}{% endblock title %}</title>
+  {% block head %}{% endblock head %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=start"></script>
+</head>
+<body>
+
+    {% block content %}
+    {% endblock content %}
+
+    <script>
+      // This function is called when the user attempts to log in using their google account
+      function signInCallback(authResult) {
+        if (authResult['code']) {
+          // Hide the sign in button
+          $('#google_login').hide();
+          $.ajax({
+            type: 'POST',
+            url: '/gconnect?state={{STATE}}',
+            processData: false,
+            data: authResult['code'],
+            contentType: 'application/octet-stream; charset=utf-8',
+            // The results of attempting to sign in are posted here
+            success: function(result) {
+              if (result) {
+                $('#sign_in_result_message').html('Successfully logged in! Redirecting back to the home page...');
+                setTimeout(function() {
+                  window.location.href = "http://localhost:5000/";
+                }, 2000);
+              } else if (authResult['error']) {
+                console.log('There was an error logging you in: ' + authResult['error']);
+              } else {
+                $('#sign_in_result_message').html('Failed to make a server-side call. Check your configuration and console.');
+              }
+            },
+            error: function(result) {
+              console.log('There was an error: ' + result);
+            }
+        });
+      }
+    }
+  </script>
+</body>
+
+</html>

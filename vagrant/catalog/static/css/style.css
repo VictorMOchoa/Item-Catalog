@@ -1,0 +1,74 @@
+img {
+    height: 175px;
+    width: 175px;
+}
+
+#item_images {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-column-gap: 100px;
+  margin-top: 50px;
+}
+
+#public_item_images {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-column-gap: 100px;
+  margin-top: 50px;
+  height: 250px;
+  width: 550px;
+}
+
+#edit_item_section {
+  margin-top: 120px;
+}
+
+#delete_item_section {
+  margin-top: 120px;
+}
+
+#latest_items_text {
+  margin-left: 25px;
+  margin-top: 20px;
+  color: gray;
+}
+
+#item_details_div {
+  margin-top: 30px;
+}
+
+#addItem {
+  margin-top: 150px;
+}
+
+.list-group a {
+  display:block;
+}
+
+.row {
+  margin-top: 60px;
+  display: flex;
+}
+
+.caption-full img{
+  display:block;
+  margin:auto;
+}
+
+#catalog_wrapper {
+  margin-top: 15px;
+  margin-left: 70px;
+}
+
+#login_btn {
+  margin-right: 15px;
+}
+
+#app_title {
+  margin-left: 10px;
+  color: white;
+}
+
+h4, h6 {
+  color: gray;
+}

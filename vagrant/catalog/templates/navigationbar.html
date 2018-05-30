@@ -1,0 +1,16 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-left">
+      <h3 id="app_title">Item Catalog</h3>
+    </div>
+    {% if 'username' not in session %}
+    <a href="{{url_for('showLogin')}}" >
+      <button class="btn btn-danger navbar-btn navbar-right" id="login_btn">Log In</button>
+    </a>
+    {% else %}
+    <a href="{{url_for('gdisconnect')}}">
+      <button type="button" class="btn btn-danger navbar-btn navbar-right" id="login_btn">Log Out</button>
+    </a>
+    {% endif %}
+  </div>
+
+</nav>

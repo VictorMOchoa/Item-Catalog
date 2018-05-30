@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% include "navigationbar.html" %}
+{% block content %}
+
+<section id = "addItem" class = "section">
+    <div class = "section-content container padding-2-3">
+
+        <form action = "{{url_for('addNewItem')}}" method = "post" class = "padding-top-10">
+            <div class = "form-group">
+                <label for = "name">Item Name:</label>
+                <input type ="text" class="form-control" id="name" maxlength="250" name="name">
+            </div>
+            <div class="form-group">
+                <label for="description">Product Description:</label>
+                <textarea name="description" id="description" class="form-control" maxlength="250"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="picture">Item Photo URL:</label>
+                <input type ="url" class="form-control" id="picture" maxlength="250" name="picture">
+            </div>
+            <div class="form-group">
+                <label for="picture">Item Category:</label>
+                <br>
+                <select name="category">
+                {% for c in categories %}
+                    <option value="{{c.name}}">{{c.name}}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+              <a href="{{url_for('showCatalog')}}">
+                  <button type="button" class="btn btn-danger">Cancel</button>
+              </a>
+              <button type="submit" id="submit" class="btn btn-danger">Save New Item</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

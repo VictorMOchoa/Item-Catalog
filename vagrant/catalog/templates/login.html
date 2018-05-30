@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+{% include "navigationbar.html" %}
+
+{% if 'username' not in session %}
+<section id="google_login" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Click below to login with your Google Account</h1>
+            </div>
+        </div>
+        <!-- Below is the actual button which will be pressed to sign in with google-->
+        <div class="container">
+            <div id="signInButton">
+              <span class="g-signin"
+                data-scope="openid email"
+                data-clientid="457891079940-eo3st2jthu3bt8ugltb9l9q238ulb7u9.apps.googleusercontent.com"
+                data-redirecturi="postmessage"
+                data-accesstype="offline"
+                data-cookiepolicy="single_host_origin"
+                data-callback="signInCallback"
+                data-approvalprompt="force">
+              </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The results of an attempted sign in are posted here -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div>
+                <div id="sign_in_result_message"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+{% endif %}
+
+
+{% endblock %}

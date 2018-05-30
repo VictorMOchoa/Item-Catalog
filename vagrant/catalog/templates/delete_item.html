@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% include "navigationbar.html" %}
+{% block content %}
+
+<section id="delete_item_section" class="section">
+    <div class="section-content container padding-1-5">
+        <p class="padding-top-10">Are you sure you want to delete item:  {{item.name}}?</p>
+        <form action="{{url_for('deleteItem', category_name = item.category.name, item_name = item.name)}}" method = "post">
+            <div class="form-group padding-top-10">
+              <a href="{{url_for('showCategory', category_name = item.category.name)}}">
+                  <button type="button" class="btn btn-danger">Cancel</button>
+              </a>
+              <button type="submit" id="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
